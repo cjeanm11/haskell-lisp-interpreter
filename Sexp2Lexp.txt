@@ -1,0 +1,55 @@
+(+ 1 1)  :
+
+----> Scons (Ssym "+") (Scons (Snum 1) (Scons (Snum 1) Snil))
+
+-------> Lcall (Lcall (Lvar "+") (Lnum 1)) (Lnum 1)
+
+
+(+ (- 3 2) 4)  :
+
+----> (Scons (Ssym "+") ( Scons (Scons (Ssym "-") (Scons (Snum 3) (Scons (Snum 2) Snil))) (Scons (Snum 4) Snil) ))
+
+------->  Lcall (Lcall (Lvar "+") (Lcall (Lcall (Lvar "-") (Lnum 3)) (Lnum 2))) (Lnum 4)
+
+(/ (* (- 68 32) 5) 9) :
+
+--> Scons (Ssym "/") (Scons (Scons (Ssym "*") (Scons (Scons (Ssym "-") (Scons (Snum 68) (Scons (Snum 32) Snil))) (Scons (Snum 5) Snil))) (Scons (Snum 9) Snil))
+
+-------->Lcall (Lcall (Lcall (Lvar "*") (Lcall (Lcall (Lvar "-") (Snum 3)) (Snum 2))) (Lnum 5)) (Lnum 9)
+
+
+à faire:
+(def lam (lambda x (+ x 1)))
+(Scons (Ssym def) (Scons (Ssym lam) (Scons (Scons (Ssym lambda) (Scons (Ssym x) (Scons (Scons (Ssym +) (Scons (Ssym x) (Scons (Snum 1) Snil ) ) ) Snil )
+
+
+à  faire:
+(let ((x 2)
+(y 3))
+(+ x y))
+
+(Scons (Ssym let) (Scons (Scons (Scons (Ssym x) (Scons (Snum 2) Snil ) ) (Scons (Scons (Ssym y) (Scons (Snum 3) Snil ) ) Snil ) ) (Scons (Scons (Ssym +) (Scons (Ssym x) (Scons (Ssym y) Snil ) ) ) Snil ) ) )
+
+(let ((x 2)
+      (y 3)
+      (z 6))
+(+ x y))
+
+(Scons (Ssym let) (Scons (Scons (Scons (Ssym "x") (Scons (Snum 2) Snil ) ) (Scons (Scons (Ssym "y") (Scons (Snum 3) Snil ) ) (Scons (Scons (Ssym "z") (Scons (
+Snum 6) Snil ) ) Snil ) ) ) (Scons (Scons (Ssym +) (Scons (Ssym x) (Scons (Ssym y) Snil ) ) ) Snil ) ) )
+
+local variable:
+(Scons (Scons (Ssym "x") (Scons (Snum 2) Snil ) ) (Scons (Scons (Ssym "y") (Scons (Snum 3) Snil ) ) Snil ) )
+
+
+if:
+(def a (if (= 1 1) (+ 1 1) (+ 2 2)))
+
+(Scons (Ssym def) (Scons (Ssym a)
+(Scons (Scons (Ssym if) (Scons
+ (Scons (Ssym =) (Scons (Snum 1) (Scons (Snum 1) Snil ) ) )
+ (Scons
+ (Scons (Ssym +) (Scons (Snum 1) (Scons (Snum 1) Snil ) ) )
+ (Scons (Scons (Ssym +) (Scons (Snum 2) (Scons (Snum 2) Snil ) ) ) Snil )
+ ) ) ) Snil ) ) )
+
