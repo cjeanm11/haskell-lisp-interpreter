@@ -3,6 +3,8 @@ date: "3rd November 2020 at 23:59"
 author: "Jean-Michel C. & Nicolas D-P."
 ---
 
+## Functional programming exploration
+
 #### This repository contains the code and documentation for an academic assignement at the University of Montreal. 
 
 #### Lisp-Like Language Implementation
